@@ -67,7 +67,7 @@ const posts: Post[] = [
     },
     date: 'MAY, 2025',
     category: { title: 'WordPress' },
-    button: { label: 'Live Demo', url: 'https://asiayouths.org' },
+    button: { label: 'Live Demo', url: 'https://asiayouths.org/' },
     developer: {
       name: 'Wunna Aung',
       role: 'WordPress Developer',
@@ -86,7 +86,7 @@ const posts: Post[] = [
     },
     date: 'OCT, 2025',
     category: { title: 'WordPress' },
-    button: { label: 'Live Demo', url: 'https://zaybann.com' },
+    button: { label: 'Live Demo', url: 'https://myanmarzaybann.com/' },
     developer: {
       name: 'Team Collabration',
       role: 'WordPress Development',
@@ -106,8 +106,8 @@ const posts: Post[] = [
     date: 'OCT, 2025',
     category: { title: 'React' },
     button: [
-      { label: 'Live Demo', url: 'https://evergreen-hill.com' },
-      { label: 'View GitHub', url: 'https://github.com/username/evergreen-hill' }
+      { label: 'Live Demo', url: 'https://the-evergreen-hill.vercel.app/' },
+      { label: 'View GitHub', url: 'https://github.com/Key9898/The-Evergreen-Hill' }
     ],
     developer: {
       name: 'Wunna Aung',
@@ -127,7 +127,7 @@ const posts: Post[] = [
     },
     date: 'AUG, 2025',
     category: { title: 'WordPress' },
-    button: { label: 'Live Demo', url: 'https://ezmyanmar.com' },
+    button: { label: 'Live Demo', url: 'https://ezmyanmar.com/' },
     developer: {
       name: 'Team Collabration',
       role: 'WordPress Development',
@@ -146,7 +146,7 @@ const posts: Post[] = [
     },
     date: 'AUG, 2025',
     category: { title: 'WordPress' },
-    button: { label: 'Live Demo', url: 'https://iduecare.com' },
+    button: { label: 'Live Demo', url: 'https://iduecare.com/' },
     developer: {
       name: 'Team Collabration',
       role: 'WordPress Development',
@@ -165,7 +165,7 @@ const posts: Post[] = [
     },
     date: 'JUN, 2025',
     category: { title: 'WordPress' },
-    button: { label: 'Live Demo', url: 'https://abhidhamma-society.org' },
+    button: { label: 'Live Demo', url: 'https://abhidhammasociety.com/' },
     developer: {
       name: 'Wunna Aung',
       role: 'WordPress Developer',
@@ -185,8 +185,8 @@ const posts: Post[] = [
     date: 'SEP, 2025',
     category: { title: 'React' },
     button: [
-      { label: 'Live Demo', url: 'https://heavenly-flowers.com' },
-      { label: 'View GitHub', url: 'https://github.com/username/heavenly-flowers' }
+      { label: 'Live Demo', url: 'https://heavenly-flowers.vercel.app/' },
+      { label: 'View GitHub', url: 'https://github.com/Key9898/Heavenly-Flowers' }
     ],
     developer: {
       name: 'Wunna Aung',
@@ -207,8 +207,8 @@ const posts: Post[] = [
     date: 'JUL, 2025',
     category: { title: 'React' },
     button: [
-      { label: 'Live Demo', url: 'https://my-portfolio.com' },
-      { label: 'View GitHub', url: 'https://github.com/username/my-portfolio' }
+      { label: 'Live Demo', url: 'https://my-portfolio-pi-nine-36.vercel.app/' },
+      { label: 'View GitHub', url: 'https://github.com/Key9898/my-portfolio' }
     ],
     developer: {
       name: 'Wunna Aung',
