@@ -87,8 +87,7 @@ export default function HeroSection() {
   }
 
   const scrollToSection = (id: string, duration = 1200, offset = 24) => {
-    // HeroSection အတွင်း Down Arrow မနှိပ်သေးလျှင် scroll မပြုလုပ်
-    if (scrollLocked) return
+    // lock check ကို ဒီ function ထဲမှာ မလုပ်တော့ပါ — call site မှာ guard လုပ်မယ်
 
     const sectionId = id.startsWith('#') ? id.slice(1) : id
     const target = document.getElementById(sectionId)
@@ -246,10 +245,16 @@ export default function HeroSection() {
                     onClick={(e) => {
                       e.preventDefault()
                       if (item.name === 'Profile') {
-                        // HeroSection locked အဖြစ်နဲ့ပင် Profile panel ကိုဖွင့်ခွင့်ရှိ
                         window.dispatchEvent(new Event('profile:open'))
                       } else {
-                        scrollToSection(item.href) // locked ဖြစ်နေသေး면 no-op
+                        // Desktop: lock ဖြစ်နေတုန်း click လိုက်ရင် unlockပြီး scroll
+                        if (scrollLocked) {
+                          setIsUnlocking(true)
+                          setScrollLocked(false)
+                          setTimeout(() => scrollToSection(item.href), 120)
+                        } else {
+                          scrollToSection(item.href)
+                        }
                       }
                     }}
                     className={`text-base font-semibold ${isActive(item.href) ? 'text-sky-600' : 'text-white hover:text-sky-700'} ${item.name === 'Get in Touch' ? 'whitespace-nowrap' : ''}`}
@@ -297,10 +302,16 @@ export default function HeroSection() {
                       onClick={() => {
                         setMobileMenuOpen(false)
                         if (item.name === 'Profile') {
-                          // Mobile မှာလည်း Profile panel ကိုဖွင့်ခွင့်ရှိ
                           window.dispatchEvent(new Event('profile:open'))
                         } else {
-                          scrollToSection(item.href) // locked ဖြစ်နေသေး면 no-op
+                          // Mobile/Tablet: lock ဖြုတ်ပြီး scroll (lock မကျန်အောင်)
+                          if (scrollLocked) {
+                            setIsUnlocking(true)
+                            setScrollLocked(false)
+                            setTimeout(() => scrollToSection(item.href), 120)
+                          } else {
+                            scrollToSection(item.href)
+                          }
                         }
                       }}
                       className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold ${isActive(item.href) ? 'text-sky-600' : 'text-white'} ${item.name === 'Get in Touch' ? 'whitespace-nowrap' : ''}`}
@@ -366,6 +377,7 @@ export default function HeroSection() {
           onClick={() => {
             setIsUnlocking(true)
             setScrollLocked(false)
+            // unlock ပြီး Document overflow ပြန်ဖယ်တဲ့ effect ကိုစောင့်ပြီး ချက်ချင်း scroll
             setTimeout(() => scrollToSection('capabilities'), 300)
           }}
           className="absolute inset-x-0 bottom-0 z-20 mx-auto flex h-10 w-10 items-center justify-center rounded-lg shadow-xl bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20 transition-all duration-200 hover:scale-105"
