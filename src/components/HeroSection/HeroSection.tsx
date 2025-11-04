@@ -21,7 +21,7 @@ export default function HeroSection() {
   const [inHero, setInHero] = useState(true)
   const [manualActive, setManualActive] = useState(false)
   // Scroll lock states: declare ONCE only
-  const [scrollLocked, setScrollLocked] = useState(true)
+  const [scrollLocked, setScrollLocked] = useState(true) // default lock on reload
   const [isUnlocking, setIsUnlocking] = useState(false)
 
   // header sticky toggle on scroll + detect if we are still in HeroSection
@@ -87,33 +87,30 @@ export default function HeroSection() {
   }
 
   const scrollToSection = (id: string, duration = 1200, offset = 24) => {
-    // auto-unlock scroll if still locked (e.g. user skipped down arrow)
-    if (scrollLocked) {
-        setIsUnlocking(true)
-        setScrollLocked(false)
-    }
-  
+    // HeroSection အတွင်း Down Arrow မနှိပ်သေးလျှင် scroll မပြုလုပ်
+    if (scrollLocked) return
+
     const sectionId = id.startsWith('#') ? id.slice(1) : id
     const target = document.getElementById(sectionId)
     if (!target) return
-  
+
     const start = window.scrollY
     const targetTop = target.getBoundingClientRect().top + window.scrollY
-    const end = targetTop + offset // section အထဲကို နည်းနည်း ထပ်ရှေ့တင်
+    const end = targetTop + offset
     const change = end - start
     const startTime = performance.now()
-  
+
     const easeInOutQuad = (t: number) =>
-        t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
-  
+      t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t
+
     const animate = (currentTime: number) => {
-        const elapsed = currentTime - startTime
-        const progress = Math.min(elapsed / duration, 1)
-        const eased = easeInOutQuad(progress)
-        window.scrollTo(0, start + change * eased)
-        if (elapsed < duration) requestAnimationFrame(animate)
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const eased = easeInOutQuad(progress)
+      window.scrollTo(0, start + change * eased)
+      if (elapsed < duration) requestAnimationFrame(animate)
     }
-  
+
     requestAnimationFrame(animate)
   }
 
@@ -249,13 +246,10 @@ export default function HeroSection() {
                     onClick={(e) => {
                       e.preventDefault()
                       if (item.name === 'Profile') {
-                        if (scrollLocked) {
-                          setIsUnlocking(true)
-                          setScrollLocked(false)
-                        }
+                        // HeroSection locked အဖြစ်နဲ့ပင် Profile panel ကိုဖွင့်ခွင့်ရှိ
                         window.dispatchEvent(new Event('profile:open'))
                       } else {
-                        scrollToSection(item.href)
+                        scrollToSection(item.href) // locked ဖြစ်နေသေး면 no-op
                       }
                     }}
                     className={`text-base font-semibold ${isActive(item.href) ? 'text-sky-600' : 'text-white hover:text-sky-700'} ${item.name === 'Get in Touch' ? 'whitespace-nowrap' : ''}`}
@@ -303,13 +297,10 @@ export default function HeroSection() {
                       onClick={() => {
                         setMobileMenuOpen(false)
                         if (item.name === 'Profile') {
-                          if (scrollLocked) {
-                            setIsUnlocking(true)
-                            setScrollLocked(false)
-                          }
+                          // Mobile မှာလည်း Profile panel ကိုဖွင့်ခွင့်ရှိ
                           window.dispatchEvent(new Event('profile:open'))
                         } else {
-                          scrollToSection(item.href)
+                          scrollToSection(item.href) // locked ဖြစ်နေသေး면 no-op
                         }
                       }}
                       className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold ${isActive(item.href) ? 'text-sky-600' : 'text-white'} ${item.name === 'Get in Touch' ? 'whitespace-nowrap' : ''}`}

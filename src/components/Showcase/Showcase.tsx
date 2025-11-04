@@ -287,7 +287,7 @@ export default function Showcase() {
                         {post.date}
                       </time>
                       <span
-                        className="relative z-10 rounded-full bg-gray-800/60 px-3 py-1.5 font-medium text-base text-gray-300 hover:bg-gray-800"
+                        className="relative z-10 rounded-lg shadow-xl bg-sky-200/20 px-3 py-1.5 font-medium text-base text-gray-300 hover:bg-sky-800"
                       >
                         {post.category.title}
                       </span>
