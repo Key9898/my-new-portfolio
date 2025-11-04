@@ -19,7 +19,8 @@ export default function GetInTouch() {
       return
     }
 
-    const EMAIL_ENABLED = import.meta.env.VITE_EMAIL_ENABLED === 'true'
+    // Enable automatically in production, or when the flag is true in dev
+    const EMAIL_ENABLED = import.meta.env.VITE_EMAIL_ENABLED === 'true' || import.meta.env.PROD
     if (!EMAIL_ENABLED) {
       window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Message sending is temporarily disabled until deployment.' }))
       return
