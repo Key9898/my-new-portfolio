@@ -306,7 +306,10 @@ export default function Showcase() {
                             <button
                               type="button"
                               key={idx}
-                              onClick={() => window.open(btn.url, '_blank')}
+                              onClick={() => {
+                                const url = btn.url.startsWith('http') ? btn.url : `https://${btn.url}`;
+                                window.open(url, '_blank');
+                                }}
                               className={
                                 btn.label.toLowerCase().includes('github')
                                   ? 'inline-flex items-center rounded-lg bg:white/10 ring-1 ring-inset ring-slate-300 px-3 py-2 text-sm font-semibold text-slate-300 shadow-xl hover:bg-white/20 hover:text-white transition-colors'
@@ -321,7 +324,11 @@ export default function Showcase() {
                         <div className="mt-6 flex gap-3">
                           <button 
                             type="button"
-                            onClick={() => window.open((post.button as ButtonData).url, '_blank')}
+                            onClick={() => {
+                              const raw = (post.button as ButtonData).url
+                              const url = raw.startsWith('http') ? raw : `https://${raw}`
+                              window.open(url, '_blank')
+                            }}
                             className="inline-flex items-center rounded-lg bg-sky-800 px-3 py-2 text-sm font-semibold text-white shadow-xl hover:bg-sky-700 transition-colors"
                           >
                             {post.button.label}
