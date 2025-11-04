@@ -1,7 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
-export default async function handler(req: any, res: any) {
-  res.setHeader('Access-Control-Allow-Origin', process.env.CORS_ALLOW_ORIGIN || 'http://localhost:5173')
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Request origin ကို ယူပြီး allow ပြီးမပိုင်ရင် fallback သတ်မှတ်
+  const reqOrigin = (req.headers?.origin as string) || ''
+  const fallbackOrigin = process.env.CORS_ALLOW_ORIGIN || 'http://localhost:5173'
+  res.setHeader('Access-Control-Allow-Origin', reqOrigin || fallbackOrigin)
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
   if (req.method === 'OPTIONS') {

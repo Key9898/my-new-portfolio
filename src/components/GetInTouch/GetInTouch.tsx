@@ -27,7 +27,8 @@ export default function GetInTouch() {
 
     setIsLoading(true)
     try {
-      const API_BASE = import.meta.env.DEV ? 'http://localhost:3000' : ''
+      // Production/Dev နှစ်ခုစလုံး에서 relative path သုံးပါ
+      const API_BASE = ''
       const resp = await fetch(`${API_BASE}/api/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
