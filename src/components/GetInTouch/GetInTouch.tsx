@@ -27,7 +27,7 @@ export default function GetInTouch() {
       return
     }
 
-    // Formspree subject ကို override လုပ်ချင်ရင် _subject ထည့်နိုင်ပါတယ်
+    // Optionally add custom subject for Formspree emails
     fd.append('_subject', `Contact from ${name}`)
 
     try {
@@ -103,13 +103,11 @@ export default function GetInTouch() {
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg rounded-lg shadow-xl bg-white/5 ring-1 ring-white/10 p-6 sm:p-8">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div className="sm:col-span-2">
-                <label htmlFor="user_name" className="block text-sm/6 font-semibold text-white">
-                  Name
-                </label>
+                <label htmlFor="name" className="block text-sm/6 font-semibold text-white">Name</label>
                 <div className="mt-2.5">
                   <input
-                    id="user_name"
-                    name="user_name"
+                    id="name"
+                    name="name"
                     type="text"
                     required
                     placeholder="Enter your name"
@@ -119,13 +117,11 @@ export default function GetInTouch() {
                 </div>
               </div>
               <div className="sm:col-span-2">
-                <label htmlFor="user_email" className="block text-sm/6 font-semibold text-white">
-                  Email
-                </label>
+                <label htmlFor="email" className="block text-sm/6 font-semibold text-white">Email</label>
                 <div className="mt-2.5">
                   <input
-                    id="user_email"
-                    name="user_email"
+                    id="email"
+                    name="email"
                     type="email"
                     required
                     placeholder="youremail@example.com"
@@ -135,9 +131,7 @@ export default function GetInTouch() {
                 </div>
               </div>
               <div className="sm:col-span-2">
-                <label htmlFor="message" className="block text-sm/6 font-semibold text-white">
-                  Message
-                </label>
+                <label htmlFor="message" className="block text-sm/6 font-semibold text-white">Message</label>
                 <div className="mt-2.5">
                   <textarea
                     id="message"
