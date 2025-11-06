@@ -1,27 +1,52 @@
-import { useRef } from 'react'
+// ဒီလိုပြင်ပါ
+import { useRef, useState } from 'react'
 import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
 export default function GetInTouch() {
   const formRef = useRef<HTMLFormElement>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setIsSubmitting(true)
+
     const formEl = formRef.current
-    if (!formEl) return
-
-    const fd = new FormData(formEl)
-    const user_name = String(fd.get('user_name') || '').trim()
-    const user_email = String(fd.get('user_email') || '').trim()
-    const message = String(fd.get('message') || '').trim()
-
-    if (!user_name || !user_email || !message) {
-      window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Please fill in all required fields.' }))
+    if (!formEl) {
+      setIsSubmitting(false)
       return
     }
 
-    const subject = encodeURIComponent(`Contact from ${user_name}`)
-    const body = encodeURIComponent(`Name: ${user_name}\nEmail: ${user_email}\n\n${message}`)
-    window.location.href = `mailto:key.w.aung.dev@gmail.com?subject=${subject}&body=${body}`
+    const fd = new FormData(formEl)
+    const name = String(fd.get('name') || '').trim()
+    const email = String(fd.get('email') || '').trim()
+    const message = String(fd.get('message') || '').trim()
+
+    if (!name || !email || !message) {
+      window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Please fill in all required fields.' }))
+      setIsSubmitting(false)
+      return
+    }
+
+    // Formspree subject ကို override လုပ်ချင်ရင် _subject ထည့်နိုင်ပါတယ်
+    fd.append('_subject', `Contact from ${name}`)
+
+    try {
+      const response = await fetch('https://formspree.io/f/mldoqwrq', {
+        method: 'POST',
+        body: fd,
+        headers: { Accept: 'application/json' }
+      })
+      if (response.ok) {
+        window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Message sent successfully!' }))
+        formEl.reset()
+      } else {
+        window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Error sending message. Please try again.' }))
+      }
+    } catch {
+      window.dispatchEvent(new CustomEvent('notify:show', { detail: 'An error occurred. Please try again.' }))
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -49,7 +74,7 @@ export default function GetInTouch() {
                   <PhoneIcon aria-hidden="true" className="h-7 w-6 text-gray-400" />
                 </dt>
                 <dd>
-                  <a href="tel:+1 (555) 234-5678" className="hover:text-white">
+                  <a href="tel:+66943018336" className="hover:text-white">
                     +66 94-301-8336
                   </a>
                 </dd>
@@ -73,8 +98,6 @@ export default function GetInTouch() {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          action="#"
-          method="POST"
           className="px-6 pb-24 sm:px-10 sm:pb-32 lg:px-8 lg:py-32 lg:pt-0"
         >
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg rounded-lg shadow-xl bg-white/5 ring-1 ring-white/10 p-6 sm:p-8">
@@ -131,9 +154,10 @@ export default function GetInTouch() {
             <div className="mt-8 flex justify-end">
               <button
                 type="submit"
-                className="rounded-lg bg-sky-800 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xl hover:bg-sky-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                disabled={isSubmitting}
+                className="rounded-lg bg-sky-800 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xl hover:bg-sky-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Send via email
+                {isSubmitting ? 'Sending…' : 'Send message'}
               </button>
               <span className="sr-only" role="status" aria-live="polite">
                 Ready
