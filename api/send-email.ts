@@ -21,7 +21,7 @@ async function parseBody(req: VercelRequest): Promise<any> {
   return b
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: any, res: any) {
   res.setHeader('Access-Control-Allow-Origin', process.env.CORS_ALLOW_ORIGIN || '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
@@ -37,13 +37,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const apiKey = process.env.RESEND_API_KEY
     if (!apiKey) {
-      return res.status(500).json({
-        error: 'RESEND_API_KEY missing',
-        hint: 'Add RESEND_API_KEY in Vercel Environment Variables (Production/Preview).'
-      })
+      return res.status(500).json({ error: 'RESEND_API_KEY missing' })
     }
-
-    const resend = new Resend(apiKey) // instantiate AFTER we confirm the key
+    const resend = new Resend(apiKey)
     const payload = await parseBody(req)
     const user_name = String(payload?.user_name || '').trim()
     const user_email = String(payload?.user_email || '').trim()
