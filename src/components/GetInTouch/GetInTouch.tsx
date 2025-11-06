@@ -18,30 +18,22 @@ export default function GetInTouch() {
       window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Please fill in all required fields.' }))
       return
     }
-
-    // Enable automatically in production, or when the flag is true in dev
-    const EMAIL_ENABLED = import.meta.env.VITE_EMAIL_ENABLED === 'true' || import.meta.env.PROD
-    if (!EMAIL_ENABLED) {
-      window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Message sending is temporarily disabled until deployment.' }))
-      return
-    }
-
-    setIsLoading(true)
     try {
-      // Production/Dev နှစ်ခုစလုံး에서 relative path သုံးပါ
-      const API_BASE = ''
-      const resp = await fetch(`${API_BASE}/api/send-email`, {
+      setIsLoading(true)
+      const resp = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_name, user_email, message }),
       })
-      if (!resp.ok) throw new Error(await resp.text())
+      if (!resp.ok) {
+        const data = await resp.json().catch(() => ({}))
+        throw new Error(data?.error || 'Failed to send message')
+      }
 
-      window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Message sent successfully!' }))
+      window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Your message has been sent. Thank you!' }))
       formEl.reset()
     } catch (err: any) {
-      console.error('Send failed:', err)
-      window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Failed to send message. Please try again later.' }))
+      window.dispatchEvent(new CustomEvent('notify:show', { detail: err?.message || 'Could not send your message.' }))
     } finally {
       setIsLoading(false)
     }
