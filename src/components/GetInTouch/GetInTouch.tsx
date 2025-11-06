@@ -25,9 +25,17 @@ export default function GetInTouch() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user_name, user_email, message }),
       })
+      const ct = resp.headers.get('content-type') || ''
       if (!resp.ok) {
-        const data = await resp.json().catch(() => ({}))
-        throw new Error(data?.error || 'Failed to send message')
+        let errMsg = 'Failed to send message'
+        if (ct.includes('application/json')) {
+          const data = await resp.json().catch(() => ({}))
+          errMsg = String(data?.error || data?.details || errMsg)
+        } else {
+          const text = await resp.text().catch(() => '')
+          errMsg = text || errMsg
+        }
+        throw new Error(errMsg)
       }
 
       window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Your message has been sent. Thank you!' }))
