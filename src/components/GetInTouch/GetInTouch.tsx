@@ -1,9 +1,8 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
 export default function GetInTouch() {
   const formRef = useRef<HTMLFormElement>(null)
-  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -14,37 +13,15 @@ export default function GetInTouch() {
     const user_name = String(fd.get('user_name') || '').trim()
     const user_email = String(fd.get('user_email') || '').trim()
     const message = String(fd.get('message') || '').trim()
+
     if (!user_name || !user_email || !message) {
       window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Please fill in all required fields.' }))
       return
     }
-    try {
-      setIsLoading(true)
-      const resp = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user_name, user_email, message }),
-      })
-      const ct = resp.headers.get('content-type') || ''
-      if (!resp.ok) {
-        let errMsg = 'Failed to send message'
-        if (ct.includes('application/json')) {
-          const data = await resp.json().catch(() => ({}))
-          errMsg = String(data?.error || data?.details || errMsg)
-        } else {
-          const text = await resp.text().catch(() => '')
-          errMsg = text || errMsg
-        }
-        throw new Error(errMsg)
-      }
 
-      window.dispatchEvent(new CustomEvent('notify:show', { detail: 'Your message has been sent. Thank you!' }))
-      formEl.reset()
-    } catch (err: any) {
-      window.dispatchEvent(new CustomEvent('notify:show', { detail: err?.message || 'Could not send your message.' }))
-    } finally {
-      setIsLoading(false)
-    }
+    const subject = encodeURIComponent(`Contact from ${user_name}`)
+    const body = encodeURIComponent(`Name: ${user_name}\nEmail: ${user_email}\n\n${message}`)
+    window.location.href = `mailto:key.w.aung.dev@gmail.com?subject=${subject}&body=${body}`
   }
 
   return (
@@ -83,7 +60,7 @@ export default function GetInTouch() {
                   <EnvelopeIcon aria-hidden="true" className="h-7 w-6 text-gray-400" />
                 </dt>
                 <dd>
-                  <a href="mailto:hello@example.com" className="hover:text-white">
+                  <a href="mailto:key.w.aung.dev@gmail.com?subject=Contact from Portfolio" className="hover:text-white">
                     key.w.aung.dev@gmail.com
                   </a>
                 </dd>
@@ -154,13 +131,12 @@ export default function GetInTouch() {
             <div className="mt-8 flex justify-end">
               <button
                 type="submit"
-                disabled={isLoading}
-                className="rounded-lg bg-sky-800 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xl hover:bg-sky-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="rounded-lg bg-sky-800 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xl hover:bg-sky-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
               >
-                {isLoading ? 'Sending…' : 'Send message'}
+                Send via email
               </button>
               <span className="sr-only" role="status" aria-live="polite">
-                {isLoading ? 'Sending message' : 'Ready'}
+                Ready
               </span>
             </div>
           </div>
