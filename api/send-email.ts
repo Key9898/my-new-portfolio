@@ -35,13 +35,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    if (!process.env.RESEND_API_KEY) {
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
       return res.status(500).json({
         error: 'RESEND_API_KEY missing',
         hint: 'Add RESEND_API_KEY in Vercel Environment Variables (Production/Preview).'
       })
     }
 
+    const resend = new Resend(apiKey) // instantiate AFTER we confirm the key
     const payload = await parseBody(req)
     const user_name = String(payload?.user_name || '').trim()
     const user_email = String(payload?.user_email || '').trim()
