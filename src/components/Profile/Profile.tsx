@@ -3,7 +3,7 @@ import { Dialog, DialogPanel, Menu, MenuButton, MenuItem, MenuItems } from '@hea
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid'
 import Notification from '../Notification/Notification'
-import Resume from '../../assets/Resume/Wunna_Aung_CV.pdf'
+import Resume from '../../assets/Resume/wunna-resume.pdf'
 import ProfileImage from '../../assets/Profile/profile_img.jpg'
 
 export default function Profile() {
