@@ -9,7 +9,7 @@ interface ShowcaseCardProps {
 export default function ShowcaseCard({ post }: ShowcaseCardProps) {
     return (
         <article className="relative isolate flex flex-col gap-8 lg:flex-row">
-            <div className="relative w-full lg:w-80 lg:shrink-0">
+            <div className="relative w-full lg:w-96 lg:shrink-0">
                 {/* Mobile Image */}
                 <img
                     alt={post.imageAlt}
@@ -32,7 +32,7 @@ export default function ShowcaseCard({ post }: ShowcaseCardProps) {
                     src={post.image.desktop}
                     loading="lazy"
                     decoding="async"
-                    className="hidden lg:block size-full rounded-lg shadow-xl bg-gray-800 object-cover aspect-square"
+                    className="hidden lg:block size-full rounded-lg shadow-xl bg-gray-800 object-cover aspect-video"
                 />
                 <div className="absolute inset-0 rounded-lg shadow-xl ring-1 ring-white/10 pointer-events-none" />
             </div>

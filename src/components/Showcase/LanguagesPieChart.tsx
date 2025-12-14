@@ -83,9 +83,9 @@ export default function LanguagesPieChart() {
       className="relative z-10 w-full min-w-0 px-4 pt-0 pb-4 bg-inherit md:-mt-px"
     >
       {visible && (
-        <div className="flex items-start gap-8 justify-center">
-          {/* Pie (left) */}
-          <div className="min-w-0 w-56 h-56 sm:w-72 sm:h-72 lg:w-80 lg:h-80 lg:pb-10">
+        <div className="flex flex-col items-center gap-6 justify-center">
+          {/* Pie (Top) */}
+          <div className="min-w-0 w-56 h-56 sm:w-72 sm:h-72 lg:w-72 lg:h-72">
             <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
               <PieChart>
                 <Pie
@@ -135,10 +135,10 @@ export default function LanguagesPieChart() {
             </ResponsiveContainer>
           </div>
 
-          {/* Legend (right, vertical order) */}
-          <div className="flex flex-col items-start justify-start space-y-4">
+          {/* Legend (Bottom, Grid) */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-3">
             {['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'TailwindCSS', 'WordPress', 'MySQL'].map((name) => (
-              <div key={name} className="flex items-center gap-3">
+              <div key={name} className="flex items-center gap-2">
                 <span className={`inline-block w-3 h-3 rounded-sm ${BG_CLASS_MAP[name]}`} aria-label={`${name} color`} />
                 <span className="text-white text-sm">{name}</span>
               </div>
