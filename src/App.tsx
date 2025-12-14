@@ -1,4 +1,5 @@
-import './App.css'
+import Header from './components/Header/Header'
+import Notification from './components/Notification/Notification'
 import HeroSection from './components/HeroSection/HeroSection'
 import Capabilities from './components/Capabilities/Capabilities'
 import Showcase from './components/Showcase/Showcase'
@@ -12,6 +13,8 @@ function App() {
 
   return (
     <>
+      <Notification />
+      <Header />
       <HeroSection />
       <section id="capabilities">
         <Capabilities />

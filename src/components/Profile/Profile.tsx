@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import { Dialog, DialogPanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid'
-import Notification from '../Notification/Notification'
-import Resume from '../../assets/Resume/wunna-resume.pdf'
-import ProfileImage from '../../assets/Profile/profile_img.jpg'
+
+const Resume = '/Resume/wunna-resume.pdf'
+const ProfileImage = '/Profile/profile_img.jpg'
 
 export default function Profile() {
   const [open, setOpen] = useState(false)
@@ -20,7 +20,6 @@ export default function Profile() {
 
   return (
     <div>
-      <Notification />
       {/* Right-side vertical tab trigger (global) */}
       <button
         type="button"
@@ -136,16 +135,16 @@ export default function Profile() {
                                         <button
                                           type="button"
                                           onClick={() => {
-                                          // Open in new tab
-                                          window.open(Resume, '_blank', 'noopener,noreferrer')
-                                          // Force download
-                                          const link = document.createElement('a')
-                                          link.href = Resume
-                                          link.download = 'Wunna_Aung_CV.pdf' // Filename to save as
-                                         document.body.appendChild(link)
-                                         link.click()
-                                         document.body.removeChild(link)
-                                         }}
+                                            // Open in new tab
+                                            window.open(Resume, '_blank', 'noopener,noreferrer')
+                                            // Force download
+                                            const link = document.createElement('a')
+                                            link.href = Resume
+                                            link.download = 'Wunna_Aung_CV.pdf' // Filename to save as
+                                            document.body.appendChild(link)
+                                            link.click()
+                                            document.body.removeChild(link)
+                                          }}
                                           className="block px-4 py-2 text-sm text-gray-300 data-focus:bg-white/5 data-focus:text-white data-focus:outline-hidden"
                                         >
                                           Download Resume
