@@ -22,15 +22,9 @@ const ZayBannMobile = '/Showcase/zay_bann_mobile.jpg'
 const OldPortfolioMobile = '/Showcase/old_portfolio_mobile.jpg'
 const HeavenlyFlowersMobile = '/Showcase/heavenly_flowers_mobile.jpg'
 const EvergreenHillMobile = '/Showcase/evergreen_hill_mobile.jpg'
-const EBookNookDesktop = '/Showcase/e_book_nook_desktop.png'
-const EBookNookTablet = '/Showcase/e_book_nook_tablet.png'
-const EBookNookMobile = '/Showcase/e_book_nook_mobile.png'
-const StackPackBundlerDesktop = '/Showcase/stackpack_bundler_desktop.png'
-const StackPackBundlerTablet = '/Showcase/stackpack_bundler_tablet.png'
-const StackPackBundlerMobile = '/Showcase/stackpack_bundler_mobile.png'
-const EasyGoDesktop = '/Showcase/easy_go_desktop.png'
-const EasyGoTablet = '/Showcase/easy_go_tablet.png'
-const EasyGoMobile = '/Showcase/easy_go_mobile.png'
+const EBookNookReal = '/Showcase/e_book_nook_real.png'
+const StackPackBundlerReal = '/Showcase/stackpack_bundler_real.png'
+const EasyGoReal = '/Showcase/easy_go_real.png'
 
 export interface ButtonData {
     label: string
@@ -83,9 +77,9 @@ export const posts: Post[] = [
             'A digital sanctuary for book lovers. This web application offers a curated collection of e-books with a focus on user experience, featuring a responsive reader interface, personalized bookshelves, and seamless navigation.',
         imageAlt: 'E-Book Nook',
         image: {
-            mobile: EBookNookMobile,
-            tablet: EBookNookTablet,
-            desktop: EBookNookDesktop,
+            mobile: EBookNookReal,
+            tablet: EBookNookReal,
+            desktop: EBookNookReal,
         },
         date: 'DEC, 2025',
         category: { title: 'React' },
@@ -105,9 +99,9 @@ export const posts: Post[] = [
             'A comprehensive car rental platform aimed at simplifying the booking process. Features include real-time availability checking, an extensive fleet gallery, and a user-friendly reservation system for effortless travel planning.',
         imageAlt: 'EasyGo',
         image: {
-            mobile: EasyGoMobile,
-            tablet: EasyGoTablet,
-            desktop: EasyGoDesktop,
+            mobile: EasyGoReal,
+            tablet: EasyGoReal,
+            desktop: EasyGoReal,
         },
         date: 'DEC, 2025',
         category: { title: 'React' },
@@ -269,9 +263,9 @@ export const posts: Post[] = [
             'A powerful developer tool designed to streamline the process of bundling web components. It provides a real-time preview, code minification, and an intuitive dashboard for managing project assets.',
         imageAlt: 'StackPack Bundler',
         image: {
-            mobile: StackPackBundlerMobile,
-            tablet: StackPackBundlerTablet,
-            desktop: StackPackBundlerDesktop,
+            mobile: StackPackBundlerReal,
+            tablet: StackPackBundlerReal,
+            desktop: StackPackBundlerReal,
         },
         date: 'NOV, 2025',
         category: { title: 'React' },
