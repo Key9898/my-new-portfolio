@@ -80,12 +80,12 @@ export default function LanguagesPieChart() {
   return (
     <div
       ref={containerRef}
-      className="relative z-10 w-full min-w-0 px-4 pt-0 pb-4 bg-inherit md:-mt-px"
+      className="relative z-10 w-full min-w-0 px-4 pt-0 pb-4 bg-inherit"
     >
       {visible && (
         <div className="flex flex-col items-center gap-6 justify-center">
           {/* Pie (Top) */}
-          <div className="min-w-0 w-56 h-56 sm:w-72 sm:h-72 lg:w-72 lg:h-72">
+          <div className="min-w-0 w-56 h-56 sm:w-72 sm:h-72 lg:w-72 lg:h-72 sm:-mt-8 lg:mt-0">
             <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
               <PieChart>
                 <Pie
