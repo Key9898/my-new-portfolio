@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import Logo from '../../assets/Logo/logo.svg'
+const Logo = '/Logo/logo.svg'
 
 const navigation = [
     { name: 'Capabilities', href: '#capabilities' },
