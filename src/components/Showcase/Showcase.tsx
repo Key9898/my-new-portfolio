@@ -33,18 +33,13 @@ export default function Showcase() {
 
   return (
     <div className="relative bg-gradient-to-t from-slate-800 to-sky-950 py-24 pt-0 sm:py-32 sm:pt-0 lg:pt-0">
-      {/* Mobile-only seam mask at the very top of the Showcase section */}
-      <div
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-b from-slate-950 to-sky-950 md:hidden pointer-events-none z-20"
-        aria-hidden="true"
-      />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-8">
         {/* Grid: mobile/tablet = 1 col, desktop = 3 cols */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* LanguagesPieChart: 1 column on desktop */}
           <div className="w-full lg:col-span-1">
             {/* Clip any 1px hairline above the pie on mobile */}
-            <div className="relative overflow-hidden pt-px md:pt-0">
+            <div className="relative overflow-hidden md:pt-0">
               <LanguagesPieChart />
             </div>
           </div>
