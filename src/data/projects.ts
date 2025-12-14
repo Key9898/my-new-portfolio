@@ -77,6 +77,50 @@ export const posts: Post[] = [
         },
     },
     {
+        id: 9,
+        title: 'E-Book Nook',
+        description:
+            'A digital sanctuary for book lovers. This web application offers a curated collection of e-books with a focus on user experience, featuring a responsive reader interface, personalized bookshelves, and seamless navigation.',
+        imageAlt: 'E-Book Nook',
+        image: {
+            mobile: EBookNookMobile,
+            tablet: EBookNookTablet,
+            desktop: EBookNookDesktop,
+        },
+        date: 'DEC, 2025',
+        category: { title: 'React' },
+        button: [
+            { label: 'Live Demo', url: 'https://e-book-nook.vercel.app/' },
+            { label: 'View GitHub', url: 'https://github.com/Key9898/E-Book-Nook' }
+        ],
+        developer: {
+            name: 'Wunna Aung',
+            role: 'Front-end Developer',
+        },
+    },
+    {
+        id: 11,
+        title: 'EasyGo',
+        description:
+            'A comprehensive car rental platform aimed at simplifying the booking process. Features include real-time availability checking, an extensive fleet gallery, and a user-friendly reservation system for effortless travel planning.',
+        imageAlt: 'EasyGo',
+        image: {
+            mobile: EasyGoMobile,
+            tablet: EasyGoTablet,
+            desktop: EasyGoDesktop,
+        },
+        date: 'DEC, 2025',
+        category: { title: 'React' },
+        button: [
+            { label: 'Live Demo', url: 'https://easy-go-phi.vercel.app/' },
+            { label: 'View GitHub', url: 'https://github.com/Key9898/EasyGo' }
+        ],
+        developer: {
+            name: 'Wunna Aung',
+            role: 'Front-end Developer',
+        },
+    },
+    {
         id: 2,
         title: 'Zay Bann',
         description:
@@ -138,7 +182,7 @@ export const posts: Post[] = [
     },
     {
         id: 5,
-        title: 'IDue Care',
+        title: 'IDueCare',
         description:
             'A corporate website for "IDue Care," a technology company focused on simplifying business services in Myanmar. This was a team collaboration, where my primary role involved WordPress development to implement the site\'s design and functionality.',
         imageAlt: 'IDue Care',
@@ -219,28 +263,6 @@ export const posts: Post[] = [
         },
     },
     {
-        id: 9,
-        title: 'E-Book Nook',
-        description:
-            'A digital sanctuary for book lovers. This web application offers a curated collection of e-books with a focus on user experience, featuring a responsive reader interface, personalized bookshelves, and seamless navigation.',
-        imageAlt: 'E-Book Nook',
-        image: {
-            mobile: EBookNookMobile,
-            tablet: EBookNookTablet,
-            desktop: EBookNookDesktop,
-        },
-        date: 'DEC, 2025',
-        category: { title: 'React' },
-        button: [
-            { label: 'Live Demo', url: 'https://e-book-nook.vercel.app/' },
-            { label: 'View GitHub', url: 'https://github.com/Key9898/E-Book-Nook' }
-        ],
-        developer: {
-            name: 'Wunna Aung',
-            role: 'Front-end Developer',
-        },
-    },
-    {
         id: 10,
         title: 'StackPack Bundler',
         description:
@@ -256,28 +278,6 @@ export const posts: Post[] = [
         button: [
             { label: 'Live Demo', url: 'https://stack-pack-bundler.vercel.app/' },
             { label: 'View GitHub', url: 'https://github.com/Key9898/StackPack-Bundler' }
-        ],
-        developer: {
-            name: 'Wunna Aung',
-            role: 'Front-end Developer',
-        },
-    },
-    {
-        id: 11,
-        title: 'EasyGo',
-        description:
-            'A comprehensive car rental platform aimed at simplifying the booking process. Features include real-time availability checking, an extensive fleet gallery, and a user-friendly reservation system for effortless travel planning.',
-        imageAlt: 'EasyGo',
-        image: {
-            mobile: EasyGoMobile,
-            tablet: EasyGoTablet,
-            desktop: EasyGoDesktop,
-        },
-        date: 'DEC, 2025',
-        category: { title: 'React' },
-        button: [
-            { label: 'Live Demo', url: 'https://easy-go-phi.vercel.app/' },
-            { label: 'View GitHub', url: 'https://github.com/Key9898/EasyGo' }
         ],
         developer: {
             name: 'Wunna Aung',
