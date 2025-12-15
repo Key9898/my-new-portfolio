@@ -211,12 +211,7 @@ export default function Profile() {
                           <dt className="text-lg font-medium text-gray-400 sm:w-40 sm:shrink-0">Website</dt>
                           <dd className="mt-1 text-base text-white sm:col-span-2">https://mynewportfolio.com</dd>
                         </div>
-                        <div>
-                          <dt className="text-base font-medium text-gray-400 sm:w-40 sm:shrink-0">Birthday</dt>
-                          <dd className="mt-1 text-base text-white sm:col-span-2">
-                            <time dateTime="1988-06-23">December 30, 1995</time>
-                          </dd>
-                        </div>
+
                       </dl>
                     </div>
                   </div>
