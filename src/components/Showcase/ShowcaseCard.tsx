@@ -9,7 +9,7 @@ interface ShowcaseCardProps {
 export default function ShowcaseCard({ post }: ShowcaseCardProps) {
     return (
         <article className="relative isolate flex flex-col gap-8 lg:flex-row">
-            <div className="relative w-full lg:w-96 lg:shrink-0">
+            <div className="relative w-full lg:w-1/2 lg:shrink-0">
                 {/* Mobile Image */}
                 <img
                     alt={post.imageAlt}
