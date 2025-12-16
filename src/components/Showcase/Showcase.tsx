@@ -36,19 +36,22 @@ export default function Showcase() {
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-8">
         {/* Grid: mobile/tablet = 1 col, desktop = 3 cols */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* LanguagesPieChart: 1 column on desktop */}
-          <div className="w-full lg:col-span-1">
+          {/* Tabs: Desktop Row 1, Col 2-3 */}
+          <div className="w-full lg:col-span-2 lg:col-start-2">
+            <ShowcaseTabs activeTab={activeTab} onTabChange={handleTabChange} />
+          </div>
+
+          {/* LanguagesPieChart: Desktop Row 2, Col 1 (Aligns with Cards top) */}
+          <div className="w-full lg:col-span-1 lg:row-start-2">
             {/* Clip any 1px hairline above the pie on mobile */}
             <div className="relative overflow-hidden md:pt-0">
               <LanguagesPieChart />
             </div>
           </div>
-          {/* Showcase posts: span 2 columns on desktop */}
-          <div className="w-full lg:col-span-2">
-            {/* Tabs hooked to Showcase */}
-            <ShowcaseTabs activeTab={activeTab} onTabChange={handleTabChange} />
 
-            <div className="space-y-12 pt-12 pb-12">
+          {/* Showcase posts: Desktop Row 2, Col 2-3 */}
+          <div className="w-full lg:col-span-2 lg:col-start-2 lg:row-start-2">
+            <div className="space-y-12 pb-12">
               {displayedPosts.map((post) => (
                 <ShowcaseCard key={post.id} post={post} />
               ))}
