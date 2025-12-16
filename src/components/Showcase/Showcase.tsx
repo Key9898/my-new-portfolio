@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import LanguagesPieChart from './LanguagesPieChart'
 import ShowcaseTabs from './ShowcaseTabs'
 import ShowcasePagination from './ShowcasePagination'
 import ShowcaseCard from './ShowcaseCard'
@@ -34,39 +33,21 @@ export default function Showcase() {
   return (
     <div className="relative bg-gradient-to-t from-slate-800 to-sky-950 py-24 pt-0 sm:py-32 sm:pt-0 lg:pt-0">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-8">
-        {/* Grid: mobile/tablet = 1 col, desktop = 3 cols */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Tabs: Desktop Row 1, Col 2-3 */}
-          <div className="w-full lg:col-span-2 lg:col-start-2">
-            <ShowcaseTabs activeTab={activeTab} onTabChange={handleTabChange} />
-          </div>
+        <ShowcaseTabs activeTab={activeTab} onTabChange={handleTabChange} />
 
-          {/* LanguagesPieChart: Desktop Row 2, Col 1 (Aligns with Cards top) */}
-          <div className="w-full lg:col-span-1 lg:row-start-2">
-            {/* Clip any 1px hairline above the pie on mobile */}
-            <div className="relative overflow-hidden md:pt-0">
-              <LanguagesPieChart />
-            </div>
-          </div>
-
-          {/* Showcase posts: Desktop Row 2, Col 2-3 */}
-          <div className="w-full lg:col-span-2 lg:col-start-2 lg:row-start-2">
-            <div className="space-y-12 pb-12">
-              {displayedPosts.map((post) => (
-                <ShowcaseCard key={post.id} post={post} />
-              ))}
-            </div>
-
-            {/* Pagination hooked to Showcase */}
-            <ShowcasePagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={handlePageChange}
-              totalPosts={filteredPosts.length}
-              postsPerPage={postsPerPage}
-            />
-          </div>
+        <div className="space-y-12 pt-12 pb-12">
+          {displayedPosts.map((post) => (
+            <ShowcaseCard key={post.id} post={post} />
+          ))}
         </div>
+
+        <ShowcasePagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          totalPosts={filteredPosts.length}
+          postsPerPage={postsPerPage}
+        />
       </div>
     </div>
   )
