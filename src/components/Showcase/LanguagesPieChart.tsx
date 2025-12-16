@@ -10,6 +10,7 @@ const data = [
   { name: 'Tailwind CSS', value: 85 },
   { name: 'React', value: 70 },
   { name: 'TypeScript', value: 70 },
+  { name: 'Firebase', value: 75 },
 ]
 
 const COLOR_MAP: Record<string, string> = {
@@ -22,6 +23,7 @@ const COLOR_MAP: Record<string, string> = {
   TailwindCSS: '#06B6D4', // alias to match any usage
   React: '#61DAFB',
   TypeScript: '#3178C6',
+  Firebase: '#FFCA28',
 }
 
 // BG_CLASS_MAP (add TailwindCSS alias)
@@ -34,6 +36,7 @@ const BG_CLASS_MAP: Record<string, string> = {
   TailwindCSS: 'bg-[#06B6D4]', // alias for legend label without space
   React: 'bg-[#61DAFB]',
   TypeScript: 'bg-[#3178C6]',
+  Firebase: 'bg-[#FFCA28]',
 }
 
 export default function LanguagesPieChart() {
@@ -137,7 +140,7 @@ export default function LanguagesPieChart() {
 
           {/* Legend (Bottom, Grid) */}
           <div className="grid grid-cols-2 gap-x-8 gap-y-3">
-            {['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'TailwindCSS', 'WordPress', 'MySQL'].map((name) => (
+            {['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'TailwindCSS', 'WordPress', 'MySQL', 'Firebase'].map((name) => (
               <div key={name} className="flex items-center gap-2">
                 <span className={`inline-block w-3 h-3 rounded-sm ${BG_CLASS_MAP[name]}`} aria-label={`${name} color`} />
                 <span className="text-white text-sm">{name}</span>

@@ -1,4 +1,4 @@
-import { SiHtml5, SiCss3, SiJavascript, SiMysql, SiWordpress, SiTailwindcss, SiReact, SiTypescript } from 'react-icons/si'
+import { SiHtml5, SiCss3, SiJavascript, SiMysql, SiWordpress, SiTailwindcss, SiReact, SiTypescript, SiFirebase } from 'react-icons/si'
 
 export default function Capabilities() {
   return (
@@ -28,6 +28,9 @@ export default function Capabilities() {
           </div>
           <div className="bg-white/5 px-6 lg:px-8 flex items-center justify-center rounded-lg shadow-xl h-32 sm:h-40">
             <SiMysql size={78} className="text-[#00758F]" aria-label="MySQL" />
+          </div>
+          <div className="bg-white/5 px-6 lg:px-8 flex items-center justify-center rounded-lg shadow-xl h-32 sm:h-40">
+            <SiFirebase size={68} className="text-[#FFCA28]" aria-label="Firebase" />
           </div>
         </div>
       </div>
