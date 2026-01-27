@@ -74,7 +74,7 @@ export const posts: Post[] = [
         ],
         developer: {
             name: 'Wunna Aung',
-            role: 'Front-end Developer',
+            role: 'frontend Developer',
         },
     },
     {
@@ -96,7 +96,7 @@ export const posts: Post[] = [
         ],
         developer: {
             name: 'Wunna Aung',
-            role: 'Front-end Developer',
+            role: 'frontend Developer',
         },
     },
     {
@@ -156,14 +156,14 @@ export const posts: Post[] = [
         ],
         developer: {
             name: 'Wunna Aung',
-            role: 'Front-end Developer',
+            role: 'frontend Developer',
         },
     },
     {
         id: 7,
         title: 'The Evergeen Hill',
         description:
-            'A visually-driven static website for "The Evergreen Hill" hotel in Kalaw. This project was custom-coded using a modern stack (React, TypeScript, Tailwind CSS) to ensure a fast, elegant, and responsive user experience. I was responsible for the entire front-end development.',
+            'A visually-driven static website for "The Evergreen Hill" hotel in Kalaw. This project was custom-coded using a modern stack (React, TypeScript, Tailwind CSS) to ensure a fast, elegant, and responsive user experience. I was responsible for the entire frontend development.',
         imageAlt: 'The Evergreen Hill',
         image: {
             mobile: EvergreenHill,
@@ -178,7 +178,7 @@ export const posts: Post[] = [
         ],
         developer: {
             name: 'Wunna Aung',
-            role: 'Front-end Developer',
+            role: 'frontend Developer',
         },
     },
     {
@@ -200,7 +200,7 @@ export const posts: Post[] = [
         ],
         developer: {
             name: 'Wunna Aung',
-            role: 'Front-end Developer',
+            role: 'frontend Developer',
         },
     },
     {
@@ -226,7 +226,7 @@ export const posts: Post[] = [
         id: 10,
         title: 'My Portfolio',
         description:
-            'My previous personal portfolio (built July 2025), created from scratch to showcase my skills and projects. This site was developed using React, TypeScript, and Tailwind CSS, demonstrating my ability to build a clean, responsive, and custom-coded front-end application.',
+            'My previous personal portfolio (built July 2025), created from scratch to showcase my skills and projects. This site was developed using React, TypeScript, and Tailwind CSS, demonstrating my ability to build a clean, responsive, and custom-coded frontend application.',
         imageAlt: 'My Old Portfolio',
         image: {
             mobile: OldPortfolio,
@@ -241,7 +241,7 @@ export const posts: Post[] = [
         ],
         developer: {
             name: 'Wunna Aung',
-            role: 'Front-end Developer',
+            role: 'frontend Developer',
         },
     },
     // {
