@@ -37,10 +37,10 @@ export default function ShowcaseTabs({ activeTab, onTabChange }: TabsProps) {
   const scrollRightTablet = () => scrollByStep(tabletScrollRef.current, 'right')
 
   return (
-    <div className="bg-gradient from-slate-800 to-sky-950 -mt-2.5">
+    <div className="mt-0">
       {/* Make tabs take the exact column width */}
       <div className="w-full px-0">
-        <div className="py-6 pt-0 border-b border-slate-600">
+        <div className="py-4 pt-0">
           {/* Mobile horizontal scrollable tabs with navigation arrows */}
           <div className="md:hidden">
             <div className="relative flex items-center">
@@ -55,7 +55,7 @@ export default function ShowcaseTabs({ activeTab, onTabChange }: TabsProps) {
               </button>
 
               {/* Scrollable tabs container */}
-              <nav 
+              <nav
                 ref={mobileScrollRef}
                 className="flex space-x-6 overflow-x-auto scrollbar-hide scroll-smooth pb-2 flex-1 pr-2"
               >
@@ -64,11 +64,10 @@ export default function ShowcaseTabs({ activeTab, onTabChange }: TabsProps) {
                     type="button"
                     key={tab.name}
                     onClick={() => handleTabClick(tab.name)}
-                    className={`flex-shrink-0 whitespace-nowrap text-base font-medium transition-colors ${
-                      activeTab === tab.name
+                    className={`flex-shrink-0 whitespace-nowrap text-base font-medium transition-colors ${activeTab === tab.name
                       ? 'border-sky-600 text-sky-600'
                       : 'border-transparent text-slate-500 hover:text-slate-600 hover:border-slate-300'
-                    }`}
+                      }`}
                   >
                     {tab.name}
                   </button>
@@ -101,7 +100,7 @@ export default function ShowcaseTabs({ activeTab, onTabChange }: TabsProps) {
               </button>
 
               {/* Scrollable tabs container */}
-              <nav 
+              <nav
                 ref={tabletScrollRef}
                 className="flex space-x-6 overflow-x-auto scrollbar-hide scroll-smooth pb-2 flex-1 pr-2"
               >
@@ -110,11 +109,10 @@ export default function ShowcaseTabs({ activeTab, onTabChange }: TabsProps) {
                     type="button"
                     key={tab.name}
                     onClick={() => handleTabClick(tab.name)}
-                    className={`flex-shrink-0 whitespace-nowrap text-base font-medium transition-colors ${
-                      activeTab === tab.name
+                    className={`flex-shrink-0 whitespace-nowrap text-base font-medium transition-colors ${activeTab === tab.name
                       ? 'border-sky-600 text-sky-600'
                       : 'border-transparent text-slate-500 hover:text-slate-600 hover:border-slate-300'
-                    }`}
+                      }`}
                   >
                     {tab.name}
                   </button>
@@ -141,11 +139,10 @@ export default function ShowcaseTabs({ activeTab, onTabChange }: TabsProps) {
                   type="button"
                   key={tab.name}
                   onClick={() => handleTabClick(tab.name)}
-                  className={`whitespace-nowrap py-2 px-1 border-b-2 font-medium text-base transition-colors ${
-                    activeTab === tab.name
-                      ? 'border-sky-600 text-sky-600'
-                      : 'border-transparent text-slate-500 hover:text-slate-600 hover:border-slate-300'
-                  }`}
+                  className={`whitespace-nowrap py-2 px-1 border-b-2 font-medium text-base transition-colors ${activeTab === tab.name
+                    ? 'border-sky-600 text-sky-600'
+                    : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-500'
+                    }`}
                 >
                   {tab.name}
                 </button>

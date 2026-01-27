@@ -3,7 +3,7 @@ import LanguagesPieChart from './LanguagesPieChart'
 
 export default function Capabilities() {
   return (
-    <div className="bg-gradient-to-b from-slate-800 to-sky-950 py-24 sm:py-32">
+    <div className="bg-gradient-to-b from-slate-800 to-sky-950 py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side: Capabilities Icons */}

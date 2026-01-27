@@ -2,7 +2,7 @@ import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/2
 
 export default function ContactInfo() {
     return (
-        <div className="relative px-6 pb-24 sm:px-10 sm:pb-32 lg:static lg:px-8 lg:py-32 lg:pt-0">
+        <div className="relative px-6 pb-16 sm:px-10 sm:pb-20 lg:static lg:px-8 lg:py-24 lg:pt-0">
             <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
                 <h2 className="text-4xl font-semibold tracking-tight text-pretty text-white sm:text-5xl">Get in touch</h2>
                 <p className="mt-6 text-lg/8 text-gray-400">

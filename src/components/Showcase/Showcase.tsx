@@ -1,54 +1,52 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import ShowcaseTabs from './ShowcaseTabs'
-import ShowcasePagination from './ShowcasePagination'
 import ShowcaseCard from './ShowcaseCard'
+import ShowcasePagination from './ShowcasePagination'
 import { posts } from '../../data/projects'
 
 export default function Showcase() {
-  const [activeTab, setActiveTab] = useState<'Showcase' | 'WordPress Projects' | 'React Projects'>('Showcase')
-  const [currentPage, setCurrentPage] = useState(1)
-  const postsPerPage = 3
+    const [activeTab, setActiveTab] = useState('Showcase')
+    const [currentPage, setCurrentPage] = useState(1)
+    const postsPerPage = 3
 
-  const filteredPosts = posts.filter((post) => {
-    if (activeTab === 'WordPress Projects') return post.category?.title === 'WordPress'
-    if (activeTab === 'React Projects') return post.category?.title === 'React'
-    return true // Showcase => show all
-  })
 
-  const totalPages =
-    filteredPosts.length === 0 ? 0 : Math.ceil(filteredPosts.length / postsPerPage)
+    const filteredPosts = useMemo(() => {
+        if (activeTab === 'Showcase') return posts
+        if (activeTab === 'WordPress Projects') return posts.filter(post => post.category.title === 'WordPress')
+        if (activeTab === 'React Projects') return posts.filter(post => post.category.title === 'React')
+        return posts
+    }, [activeTab])
 
-  const startIndex = (currentPage - 1) * postsPerPage
-  const displayedPosts = filteredPosts.slice(startIndex, startIndex + postsPerPage)
+    const totalPages = Math.ceil(filteredPosts.length / postsPerPage)
+    const currentPosts = filteredPosts.slice(
+        (currentPage - 1) * postsPerPage,
+        currentPage * postsPerPage
+    )
 
-  const handleTabChange = (tabName: string) => {
-    setActiveTab(tabName as any)
-    setCurrentPage(1)
-  }
+    const handleTabChange = (tabName: string) => {
+        setActiveTab(tabName)
+        setCurrentPage(1)
+    }
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page)
-  }
+    return (
+        <div className="bg-gradient-to-t from-slate-800 to-sky-950 py-16 sm:py-20 lg:py-24">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                <ShowcaseTabs activeTab={activeTab} onTabChange={handleTabChange} />
 
-  return (
-    <div className="relative bg-gradient-to-t from-slate-800 to-sky-950 py-24 pt-0 sm:py-32 sm:pt-0 lg:pt-0">
-      <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-8">
-        <ShowcaseTabs activeTab={activeTab} onTabChange={handleTabChange} />
+                <div className="mx-auto mt-6 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-700 pt-6 sm:mt-8 sm:pt-8 lg:mx-0 lg:max-w-none lg:grid-cols-1">
+                    {currentPosts.map((post) => (
+                        <ShowcaseCard key={post.id} post={post} />
+                    ))}
+                </div>
 
-        <div className="space-y-12 pt-12 pb-12">
-          {displayedPosts.map((post) => (
-            <ShowcaseCard key={post.id} post={post} />
-          ))}
+                <ShowcasePagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                    totalPosts={filteredPosts.length}
+                    postsPerPage={postsPerPage}
+                />
+            </div>
         </div>
-
-        <ShowcasePagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-          totalPosts={filteredPosts.length}
-          postsPerPage={postsPerPage}
-        />
-      </div>
-    </div>
-  )
+    )
 }

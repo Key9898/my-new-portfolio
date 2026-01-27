@@ -51,7 +51,7 @@ export default function ContactForm() {
         <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="px-6 pb-24 sm:px-10 sm:pb-32 lg:px-8 lg:py-32 lg:pt-0"
+            className="px-6 pb-16 sm:px-10 sm:pb-20 lg:px-8 lg:py-24 lg:pt-0"
         >
             <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg rounded-lg shadow-xl bg-white/5 ring-1 ring-white/10 p-6 sm:p-8">
                 <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">

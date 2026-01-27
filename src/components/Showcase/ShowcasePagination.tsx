@@ -47,7 +47,7 @@ export default function ShowcasePagination({
   }
 
   return (
-    <div className="bg-gradient from-slate-800 to-sky-950">
+    <div className="mt-8 border-t border-gray-700 pt-6">
       {/* Make pagination take the exact column width */}
       <div className="w-full px-0">
         <div className="flex items-center justify-between py-6">
@@ -90,17 +90,16 @@ export default function ShowcasePagination({
                   <span className="sr-only">Previous</span>
                   <ChevronLeftIcon aria-hidden="true" className="h-5 w-5" />
                 </button>
-                
+
                 {pageNumbers.map((page) => (
                   <button
                     type="button"
                     key={page}
                     onClick={() => handlePageClick(page)}
-                    className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold transition-colors ${
-                      currentPage === page
-                        ? 'z-10 bg-sky-600 text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600'
-                        : 'text-slate-500 ring-1 ring-inset ring-slate-300 hover:bg-sky-700 hover:text-white focus:z-20 focus:outline-offset-0'
-                    }`}
+                    className={`relative inline-flex items-center px-4 py-2 text-sm font-semibold transition-colors ${currentPage === page
+                      ? 'z-10 bg-sky-600 text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600'
+                      : 'text-slate-500 ring-1 ring-inset ring-slate-300 hover:bg-sky-700 hover:text-white focus:z-20 focus:outline-offset-0'
+                      }`}
                   >
                     {page}
                   </button>

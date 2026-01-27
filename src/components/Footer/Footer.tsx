@@ -5,7 +5,7 @@ export default function Footer() {
         <p className="text-center text-sm/6 text-gray-500">
           <span className="block sm:inline">&copy; 2025 My New Portfolio.</span>{' '}
           <span className="block sm:inline">All rights reserved.</span>{' '}
-          <span className="block sm:inline">Designed and built by Wunna Aung.</span>
+          <span className="block sm:inline">Designed and developed by Wunna Aung.</span>
         </p>
       </div>
     </footer>
